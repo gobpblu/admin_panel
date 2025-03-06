@@ -1,7 +1,7 @@
-import 'package:ecommerce_admin_panel/features.authentication/screens/dashboard/dashboard_screen.dart';
-import 'package:ecommerce_admin_panel/features.authentication/screens/forget_password/forget_password_screen.dart';
-import 'package:ecommerce_admin_panel/features.authentication/screens/login/login_screen.dart';
-import 'package:ecommerce_admin_panel/features.authentication/screens/reset_password/reset_password_screen.dart';
+import 'package:ecommerce_admin_panel/features/dashboard/dashboard_screen.dart';
+import 'package:ecommerce_admin_panel/features/authentication/screens/forget_password/forget_password_screen.dart';
+import 'package:ecommerce_admin_panel/features/authentication/screens/login/login_screen.dart';
+import 'package:ecommerce_admin_panel/features/authentication/screens/reset_password/reset_password_screen.dart';
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
 import 'package:ecommerce_admin_panel/routes/routes_middleware.dart';
 import 'package:get/get.dart';

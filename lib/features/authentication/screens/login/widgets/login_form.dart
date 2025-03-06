@@ -1,3 +1,4 @@
+import 'package:ecommerce_admin_panel/features/authentication/controllers/login_controller.dart';
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
 import 'package:ecommerce_admin_panel/utils/constants/app_sizes.dart';
 import 'package:ecommerce_admin_panel/utils/constants/app_texts.dart';
@@ -12,13 +13,16 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AppSizes.spaceBtwSections),
         child: Column(
           children: [
             // Email
             TextFormField(
+              controller: controller.email,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: AppTexts.email,
@@ -29,6 +33,7 @@ class LoginForm extends StatelessWidget {
 
             // Password
             TextFormField(
+              controller: controller.password,
               obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Iconsax.direct_right),
