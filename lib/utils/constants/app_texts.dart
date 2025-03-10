@@ -1,5 +1,10 @@
 /// This class contains all the App Text in String formats.
 class AppTexts {
+
+  // -- Admin Default Credentials
+  static const String adminEmail = "Max@mail.ru";
+  static const String adminPassword = "Qwer1234";
+
   // -- GLOBAL Texts
   static const String and = "and";
   static const String skip = "Skip";

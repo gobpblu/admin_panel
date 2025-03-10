@@ -2,6 +2,7 @@ import 'package:ecommerce_admin_panel/features/authentication/controllers/login_
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
 import 'package:ecommerce_admin_panel/utils/constants/app_sizes.dart';
 import 'package:ecommerce_admin_panel/utils/constants/app_texts.dart';
+import 'package:ecommerce_admin_panel/utils/validator/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -23,6 +24,7 @@ class LoginForm extends StatelessWidget {
             // Email
             TextFormField(
               controller: controller.email,
+              validator: Validator.validateEmail,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: AppTexts.email,
@@ -32,15 +34,21 @@ class LoginForm extends StatelessWidget {
             const SizedBox(height: AppSizes.spaceBtwSections),
 
             // Password
-            TextFormField(
-              controller: controller.password,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Iconsax.direct_right),
-                labelText: AppTexts.password,
-                suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Iconsax.eye)),
-              ),
-            ),
+            Obx(() {
+              return TextFormField(
+                controller: controller.password,
+                validator: (value) => Validator.validateEmptyText('Password', value),
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.direct_right),
+                  labelText: AppTexts.password,
+                  suffixIcon: IconButton(
+                    onPressed: controller.changeHidePassword,
+                    icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
+                  ),
+                ),
+              );
+            }),
 
             const SizedBox(height: AppSizes.spaceBtwInputFields / 2),
 
@@ -52,7 +60,7 @@ class LoginForm extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(() => Checkbox(value: controller.rememberMe.value, onChanged: controller.changeRememberMe)),
                     const Text(AppTexts.rememberMe),
                   ],
                 ),
@@ -69,7 +77,11 @@ class LoginForm extends StatelessWidget {
             /// Sign In Button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: () {}, child: const Text(AppTexts.signIn)),
+              child: ElevatedButton(
+                // onPressed: controller.signInWithEmailAndPassword,
+                onPressed: controller.signIn,
+                child: const Text(AppTexts.signIn),
+              ),
             )
           ],
         ),

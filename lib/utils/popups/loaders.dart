@@ -5,7 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import '../constants/colors.dart';
 import '../helpers/helper_functions.dart';
 
-class TLoaders {
+class AppLoaders {
   static hideSnackBar() => ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 
   static customToast({required message}) {
@@ -19,7 +19,7 @@ class TLoaders {
           margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: THelperFunctions.isDarkMode(Get.context!)
+            color: HelperFunctions.isDarkMode(Get.context!)
                 ? AppColors.darkerGrey.withOpacity(0.9)
                 : AppColors.grey.withOpacity(0.9),
           ),

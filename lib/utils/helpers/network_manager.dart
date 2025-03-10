@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:ecommerce_admin_panel/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +26,7 @@ class NetworkManager extends GetxController {
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     _connectionStatus.value = result;
     if (result.contains(ConnectivityResult.none)) {
-      // TLoaders.customToast(message: 'No Internet Connection');
+      AppLoaders.customToast(message: 'No Internet Connection');
     }
   }
 

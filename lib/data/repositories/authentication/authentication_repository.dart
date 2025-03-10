@@ -1,13 +1,9 @@
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
-import 'package:ecommerce_admin_panel/utils/failures/firebase_auth_failure.dart';
-import 'package:ecommerce_admin_panel/utils/failures/firebase_failure.dart';
-import 'package:ecommerce_admin_panel/utils/failures/format_failure.dart';
-import 'package:ecommerce_admin_panel/utils/failures/platform_failure.dart';
+import 'package:ecommerce_admin_panel/utils/failures/failure_mixin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class AuthenticationRepository extends GetxController {
+class AuthenticationRepository extends GetxController with FailureMixin {
   static AuthenticationRepository get instance => Get.find();
 
   final _auth = FirebaseAuth.instance;
@@ -19,6 +15,16 @@ class AuthenticationRepository extends GetxController {
   @override
   void onReady() {
     _auth.setPersistence(Persistence.LOCAL);
+  }
+
+  void redirectScreen() async {
+    final user = _auth.currentUser;
+
+    if (user != null) {
+      Get.offAllNamed(AppRoutes.dashboard);
+    } else {
+      Get.offAllNamed(AppRoutes.login);
+    }
   }
 
   Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
@@ -33,20 +39,10 @@ class AuthenticationRepository extends GetxController {
     });
   }
 
-  Future<UserCredential> callWithTryCatch(Future<UserCredential> Function() fun) async {
-    try {
-      // return await _auth.signInWithEmailAndPassword(email: email, password: password);
-      return fun();
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthFailure(e.code).message;
-    } on FirebaseException catch (e) {
-      throw FirebaseFailure(e.code).message;
-    } on FormatException catch (e) {
-      throw const FormatFailure();
-    } on PlatformException catch (e) {
-      throw PlatformFailure(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
+  Future<void> logout() async {
+    await callWithTryCatch(() async {
+      await _auth.signOut();
+      Get.offAllNamed(AppRoutes.login);
+    });
   }
 }

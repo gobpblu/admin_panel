@@ -1,3 +1,4 @@
+import 'package:ecommerce_admin_panel/common/bindings/general_bindings.dart';
 import 'package:ecommerce_admin_panel/common/widgets/layouts/templates/site_layout.dart';
 import 'package:ecommerce_admin_panel/routes/app_router.dart';
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
         name: '/page-not-found',
         page: () => const Scaffold(body: Center(child: Text('Page Not Found'))),
       ),
+      initialBinding: GeneralBindings(),
       navigatorObservers: [
         AppRouteObserver(),
       ],
