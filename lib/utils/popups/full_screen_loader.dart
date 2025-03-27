@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../constants/colors.dart';
 import '../helpers/helper_functions.dart';
 import '../loaders/animation_loader.dart';
@@ -26,7 +27,7 @@ class TFullScreenLoader {
             child: Column(
               children: [
                 const SizedBox(height: 250), // Adjust the spacing as needed
-                TAnimationLoaderWidget(text: text, animation: animation),
+                AnimationLoaderWidget(text: text, animation: animation),
               ],
             ),
           ),

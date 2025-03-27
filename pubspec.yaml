@@ -30,7 +30,7 @@ dependencies:
   http: ^1.2.2
   html: ^0.15.5
   fl_chart: ^0.70.2
-  data_table_2: ^2.5.18
+  data_table_2: ^2.6.0
   url_strategy: ^0.3.0
 
   # Icons

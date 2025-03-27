@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../../../utils/constants/colors.dart';
 
 /// A widget for displaying an animated loading indicator with optional text and action button.
-class TAnimationLoaderWidget extends StatelessWidget {
+class AnimationLoaderWidget extends StatelessWidget {
   /// Default constructor for the TAnimationLoaderWidget.
   ///
   /// Parameters:
@@ -14,13 +14,15 @@ class TAnimationLoaderWidget extends StatelessWidget {
   ///   - showAction: Whether to show an action button below the text.
   ///   - actionText: The text to be displayed on the action button.
   ///   - onActionPressed: Callback function to be executed when the action button is pressed.
-  const TAnimationLoaderWidget({
+  const AnimationLoaderWidget({
     super.key,
     required this.text,
     required this.animation,
     this.showAction = false,
     this.actionText,
     this.onActionPressed,
+    this.height,
+    this.width,
   });
 
   final String text;
@@ -28,6 +30,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
   final bool showAction;
   final String? actionText;
   final VoidCallback? onActionPressed;
+  final double? height, width;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,11 @@ class TAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation, width: MediaQuery.of(context).size.width * 0.8), // Display Lottie animation
+          Lottie.asset(
+            animation,
+            width: width,
+            height: height ?? MediaQuery.of(context).size.width * 0.5,
+          ), // Display Lottie animation
           const SizedBox(height: AppSizes.defaultSpace),
           Text(
             text,

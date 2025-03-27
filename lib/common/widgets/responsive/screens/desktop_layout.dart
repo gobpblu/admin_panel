@@ -1,5 +1,5 @@
-import 'package:ecommerce_admin_panel/common/widgets/layouts/sidebars/side_drawer.dart';
 import 'package:ecommerce_admin_panel/common/widgets/layouts/headers/header.dart';
+import 'package:ecommerce_admin_panel/common/widgets/layouts/sidebars/side_drawer.dart';
 import 'package:flutter/material.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -18,9 +18,9 @@ class DesktopLayout extends StatelessWidget {
               child: Column(
                 children: [
                   // HEADER
-                  HeaderWidget(),
+                  const HeaderWidget(),
                   // BODY
-                  body ?? const SizedBox(),
+                  Expanded(child: body ?? const SizedBox()),
                 ],
               )),
         ],

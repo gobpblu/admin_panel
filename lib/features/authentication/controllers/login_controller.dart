@@ -76,7 +76,7 @@ class LoginController extends GetxController {
 
   Future<void> signIn() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Registering Admin Account...', AppImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog('Signing in...', AppImages.docerAnimation);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -102,7 +102,8 @@ class LoginController extends GetxController {
 
       if (user.role != AppRole.admin) {
         await AuthenticationRepository.instance.logout();
-        AppLoaders.errorSnackBar(title: 'Not Authorized', message: 'You are not authorized or do have access. Contact admin');
+        AppLoaders.errorSnackBar(
+            title: 'Not Authorized', message: 'You are not authorized or do have access. Contact admin');
       } else {
         AuthenticationRepository.instance.redirectScreen();
       }
@@ -111,5 +112,4 @@ class LoginController extends GetxController {
       AppLoaders.errorSnackBar(title: 'Something went wrong', message: e.toString());
     }
   }
-
 }

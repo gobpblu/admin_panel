@@ -1,8 +1,4 @@
 import 'package:ecommerce_admin_panel/common/widgets/layouts/templates/login_template.dart';
-import 'package:ecommerce_admin_panel/routes/app_routes.dart';
-import 'package:ecommerce_admin_panel/utils/constants/app_sizes.dart';
-import 'package:ecommerce_admin_panel/utils/constants/app_texts.dart';
-import 'package:ecommerce_admin_panel/utils/constants/image_strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,9 +12,8 @@ class ResetPasswordDesktopTabletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final email = Get.parameters['email'] ?? '';
-    return LoginTemplate(
+    return const LoginTemplate(
       child: ResetPasswordWidget(),
     );
   }
 }
-
