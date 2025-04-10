@@ -3,6 +3,8 @@ import 'package:ecommerce_admin_panel/common/widgets/layouts/templates/site_layo
 import 'package:ecommerce_admin_panel/routes/app_router.dart';
 import 'package:ecommerce_admin_panel/routes/app_routes.dart';
 import 'package:ecommerce_admin_panel/routes/route_observer.dart';
+import 'package:ecommerce_admin_panel/utils/constants/app_texts.dart';
+import 'package:ecommerce_admin_panel/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +14,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: AppTexts.appName,
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
+      theme: AdminPanelAppTheme.lightTheme,
+      darkTheme: AdminPanelAppTheme.darkTheme,
       getPages: AppRouter.pages,
       initialRoute: AppRoutes.dashboard,
       unknownRoute: GetPage(

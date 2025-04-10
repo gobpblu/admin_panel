@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:ecommerce_admin_panel/features/dashboard/widgets/dashboard_card.dart';
+import 'package:ecommerce_admin_panel/utils/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 
 class DashboardMobileScreen extends StatelessWidget {
@@ -6,6 +7,26 @@ class DashboardMobileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Dashboard Mobile')),);
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Dashboard', style: Theme.of(context).textTheme.headlineLarge),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              const DashboardCard(stats: 25, title: 'Sales total', subtitle: '\$363.2'),
+              const SizedBox(height: AppSizes.spaceBtwItems),
+              const DashboardCard(stats: 77, title: 'Average Order Value', subtitle: '\$23'),
+              const SizedBox(height: AppSizes.spaceBtwItems),
+              const DashboardCard(stats: 13, title: 'Total orders', subtitle: '\$3.2'),
+              const SizedBox(height: AppSizes.spaceBtwItems),
+              const DashboardCard(stats: 2, title: 'Visitors', subtitle: '\$77.7'),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
