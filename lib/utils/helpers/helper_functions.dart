@@ -1,8 +1,25 @@
+import 'package:ecommerce_admin_panel/features/orders/models/order_status.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class HelperFunctions {
+  static DateTime getStartOfWeek(DateTime date) {
+    final int daysUntilMonday = date.weekday - 1;
+    final DateTime startOfWeek = date.subtract(Duration(days: daysUntilMonday));
+    return DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day, 0, 0, 0, 0, 0);
+  }
+
+  static Color getOrderStatusColor(OrderStatus value) {
+    return switch (value) {
+      OrderStatus.processing => Colors.orange,
+      OrderStatus.shipped => Colors.purple,
+      OrderStatus.delivered => Colors.green,
+      OrderStatus.cancelled => Colors.red,
+      OrderStatus.pending => Colors.blue,
+    };
+  }
+
   static Color? getColor(String value) {
     /// Define your product specific colors here and it will match the attribute colors and show specific 🟠🟡🟢🔵🟣🟤
 
