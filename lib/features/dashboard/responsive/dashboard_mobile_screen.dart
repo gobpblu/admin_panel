@@ -1,4 +1,4 @@
-import 'package:ecommerce_admin_panel/common/widgets/containers/rounded_container.dart';
+import 'package:ecommerce_admin_panel/features/dashboard/presentation/table/data_table.dart';
 import 'package:ecommerce_admin_panel/features/dashboard/widgets/dashboard_card.dart';
 import 'package:ecommerce_admin_panel/features/dashboard/widgets/order_status_pie_chart.dart';
 import 'package:ecommerce_admin_panel/features/dashboard/widgets/weekly_sales_graph_widget.dart';
@@ -34,7 +34,7 @@ class DashboardMobileScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Orders
-              const RoundedContainer(),
+              const DashboardOrderTable(),
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               const OrderStatusPieChart(),
