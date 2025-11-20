@@ -44,7 +44,7 @@ class AppSideDrawer extends StatelessWidget {
                     ),
 
                     // Menu Items
-                    const MenuItem(route: AppRoutes.firstScreen, title: 'Dashboard', icon: Iconsax.status),
+                    const MenuItem(route: AppRoutes.dashboard, title: 'Dashboard', icon: Iconsax.status),
                     const MenuItem(route: AppRoutes.media, title: 'Media', icon: Iconsax.image),
                     const MenuItem(route: AppRoutes.banners, title: 'Banners', icon: Iconsax.picture_frame),
                   ],
