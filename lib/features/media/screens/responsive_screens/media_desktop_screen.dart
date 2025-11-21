@@ -20,7 +20,10 @@ class MediaDesktopScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Breadcrumbs
-                  BreadcrumbsWithHeading(),
+                  BreadcrumbsWithHeading(
+                    heading: 'Media',
+                    breadcrumbItems: [],
+                  ),
                 ],
               ),
 
